@@ -1,3 +1,10 @@
+# [0.1.0](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.20...v0.1.0) (2026-06-05)
+
+
+### Features
+
+* v1.0.0 ([1f60588](https://github.com/HoplaGeiss/ngx-herald/commit/1f60588122cf0366f39a4ca33e2106aa4dd8d2cc))
+
 ## [0.0.20](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.19...v0.0.20) (2026-06-05)
 
 
