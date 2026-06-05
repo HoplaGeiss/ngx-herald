@@ -1,0 +1,53 @@
+<ngx-herald />
+
+<main class="demo">
+  <header class="demo__header">
+    <h1>ngx-herald</h1>
+    <p>A modern Angular toast notification library — signals-first, zoneless-compatible, zero dependencies.</p>
+  </header>
+
+  <section class="demo__section">
+    <h2>Toast types</h2>
+    <div class="demo__grid">
+      <button class="btn btn--success" type="button" (click)="showSuccess()">Success</button>
+      <button class="btn btn--error" type="button" (click)="showError()">Error</button>
+      <button class="btn btn--warning" type="button" (click)="showWarning()">Warning</button>
+      <button class="btn btn--info" type="button" (click)="showInfo()">Info</button>
+    </div>
+  </section>
+
+  <section class="demo__section">
+    <h2>Variants</h2>
+    <div class="demo__grid">
+      <button class="btn" type="button" (click)="showNoDismiss()">No dismiss button</button>
+      <button class="btn" type="button" (click)="showNoProgress()">No progress bar</button>
+      <button class="btn" type="button" (click)="showLong()">Long duration (10s)</button>
+      <button class="btn" type="button" (click)="showCustom()">Custom template</button>
+    </div>
+  </section>
+
+  <section class="demo__section">
+    <h2>Promise</h2>
+    <div class="demo__grid">
+      <button class="btn" type="button" (click)="showPromise()">Promise (resolves after 2s)</button>
+      <button class="btn" type="button" (click)="showPromiseError()">Promise (rejects after 2s)</button>
+    </div>
+  </section>
+
+  <section class="demo__section">
+    <div class="demo__grid">
+      <button class="btn btn--outline" type="button" (click)="dismissAll()">Dismiss all</button>
+    </div>
+  </section>
+</main>
+
+<ng-template #customTmpl let-t let-dismiss="dismiss">
+  <div style="padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
+    <span style="font-size: 20px;" aria-hidden="true">🎉</span>
+    <div style="flex: 1;">
+      <strong>{{ t.message }}</strong>
+      <p style="margin: 2px 0 0; color: #6b7280; font-size: 13px;">This is a custom TemplateRef toast.</p>
+    </div>
+    <button type="button" (click)="dismiss()" style="border: none; background: none; cursor: pointer; font-size: 18px; line-height: 1;" aria-label="Dismiss">×</button>
+  </div>
+</ng-template>

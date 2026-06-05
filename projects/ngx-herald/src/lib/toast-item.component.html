@@ -1,0 +1,61 @@
+@if (toast().options.template; as tmpl) {
+  <ng-template [ngTemplateOutlet]="tmpl" [ngTemplateOutletContext]="templateContext()" />
+} @else {
+  <div class="ngx-herald-item__content">
+    <span class="ngx-herald-item__icon" [class]="'ngx-herald-item__icon--' + toast().type" aria-hidden="true">
+      @switch (toast().type) {
+        @case ('success') {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M8 12l3 3 5-5"/>
+          </svg>
+        }
+        @case ('error') {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M15 9l-6 6M9 9l6 6"/>
+          </svg>
+        }
+        @case ('warning') {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+          </svg>
+        }
+        @case ('info') {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <circle cx="12" cy="8" r="0.5" fill="currentColor"/>
+          </svg>
+        }
+      }
+    </span>
+
+    <div class="ngx-herald-item__body">
+      <p class="ngx-herald-item__message">{{ toast().message }}</p>
+      @if (toast().options.description) {
+        <p class="ngx-herald-item__description">{{ toast().options.description }}</p>
+      }
+    </div>
+
+    @if (toast().options.dismissible) {
+      <button
+        class="ngx-herald-item__close"
+        type="button"
+        aria-label="Dismiss notification"
+        (click)="dismiss()"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    }
+  </div>
+
+  @if (toast().options.progressBar && toast().options.duration > 0) {
+    <div class="ngx-herald-item__progress" aria-hidden="true"></div>
+  }
+}

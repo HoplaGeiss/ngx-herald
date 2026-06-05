@@ -1,0 +1,13 @@
+@for (group of positionGroups(); track group.position) {
+  <div
+    class="ngx-herald-group"
+    [class]="'ngx-herald-group--' + group.position"
+    role="log"
+    aria-label="Notifications"
+    aria-relevant="additions removals"
+  >
+    @for (toast of group.toasts; track toast.id) {
+      <ngx-herald-item [toast]="toast" />
+    }
+  </div>
+}
