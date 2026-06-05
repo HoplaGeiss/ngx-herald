@@ -1,3 +1,10 @@
+## [0.0.14](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.13...v0.0.14) (2026-06-05)
+
+
+### Bug Fixes
+
+* adds UT & adds theme switcher in demo ([b900893](https://github.com/HoplaGeiss/ngx-herald/commit/b900893b10cac19128993df0979f5437e9f1c4f6))
+
 ## [0.0.13](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.12...v0.0.13) (2026-06-05)
 
 
