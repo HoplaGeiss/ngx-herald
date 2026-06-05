@@ -1,3 +1,10 @@
+## [0.0.15](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.14...v0.0.15) (2026-06-05)
+
+
+### Bug Fixes
+
+* demo with theme ([5152270](https://github.com/HoplaGeiss/ngx-herald/commit/51522707368bf7212f3a3c074fc11760934faf20))
+
 ## [0.0.14](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.13...v0.0.14) (2026-06-05)
 
 
