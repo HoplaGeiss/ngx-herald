@@ -1,3 +1,10 @@
+## [0.0.13](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.12...v0.0.13) (2026-06-05)
+
+
+### Bug Fixes
+
+* optimize pipeline ([074533c](https://github.com/HoplaGeiss/ngx-herald/commit/074533c85443c3dbc213e28f48ff80625a73211e))
+
 ## [0.0.12](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.11...v0.0.12) (2026-06-05)
 
 
