@@ -3,7 +3,7 @@
 A modern Angular toast notification library. Signals-first, zoneless-compatible, zero runtime dependencies.
 
 [![npm](https://img.shields.io/npm/v/ngx-herald)](https://www.npmjs.com/package/ngx-herald)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/ngx-herald)](https://bundlephobia.com/package/ngx-herald)
+[![pkg size](https://pkg-size.dev/badge/bundle/ngx-herald)](https://pkg-size.dev/ngx-herald)
 [![license](https://img.shields.io/npm/l/ngx-herald)](LICENSE)
 
 **[Live demo →](https://hoplageiss.github.io/ngx-herald/)**
