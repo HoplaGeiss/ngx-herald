@@ -7,6 +7,22 @@
   </header>
 
   <section class="demo__section">
+    <h2>Theme select</h2>
+    <div class="theme-chips">
+      @for (theme of themes; track theme.id) {
+        <button
+          class="chip"
+          [class.chip--active]="activeTheme() === theme.id"
+          type="button"
+          (click)="setTheme(theme.id)"
+        >
+          {{ theme.label }}
+        </button>
+      }
+    </div>
+  </section>
+
+  <section class="demo__section">
     <h2>Toast types</h2>
     <div class="demo__grid">
       <button class="btn btn--success" type="button" (click)="showSuccess()">Success</button>

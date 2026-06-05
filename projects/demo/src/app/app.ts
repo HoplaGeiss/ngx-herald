@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, TemplateRef, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef, viewChild, effect, inject, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { toast, ToasterComponent } from 'ngx-herald';
 
 @Component({
@@ -10,6 +11,31 @@ import { toast, ToasterComponent } from 'ngx-herald';
 })
 export class App {
   private readonly customTmpl = viewChild<TemplateRef<unknown>>('customTmpl');
+
+  readonly themes = [
+    { id: 'default', label: 'Default' },
+    { id: 'material', label: 'Angular Material' },
+    { id: 'bootstrap', label: 'Bootstrap' },
+    { id: 'prime', label: 'PrimeNG' },
+  ] as const;
+
+  readonly activeTheme = signal<'default' | 'material' | 'bootstrap' | 'prime'>('default');
+
+  private readonly document = inject(DOCUMENT);
+
+  constructor() {
+    effect(() => {
+      const theme = this.activeTheme();
+      const body = this.document.body;
+      body.classList.remove('theme-default', 'theme-material', 'theme-bootstrap', 'theme-prime');
+      body.classList.add(`theme-${theme}`);
+    });
+  }
+
+  setTheme(theme: 'default' | 'material' | 'bootstrap' | 'prime'): void {
+    this.activeTheme.set(theme);
+  }
+
 
   showSuccess(): void {
     toast.success('File saved successfully', { description: 'Your changes have been saved.' });

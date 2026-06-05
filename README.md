@@ -2,11 +2,18 @@
 
 A modern Angular toast notification library. Signals-first, zoneless-compatible, zero runtime dependencies.
 
+[![CI](https://github.com/HoplaGeiss/ngx-herald/actions/workflows/ci.yml/badge.svg)](https://github.com/HoplaGeiss/ngx-herald/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/ngx-herald)](https://www.npmjs.com/package/ngx-herald)
 [![pkg size](https://pkg-size.dev/badge/bundle/ngx-herald)](https://pkg-size.dev/ngx-herald)
 [![license](https://img.shields.io/npm/l/ngx-herald)](LICENSE)
 
 **[Live demo →](https://hoplageiss.github.io/ngx-herald/)**
+
+### Why ngx-herald?
+
+For years, `ngx-toastr` was the standard choice for toast notifications in Angular. However, after it was compromised and subsequently abandoned, the Angular community was left without a modern, secure, and actively maintained alternative—especially one designed for modern Angular architectures (Signals-first, zoneless-compatible, and zero runtime dependencies).
+
+`ngx-herald` was built to fill this gap: a clean, modern, secure toaster library built from the ground up for modern Angular applications.
 
 ---
 
@@ -44,33 +51,15 @@ pnpm add ngx-herald
 
 ## Setup
 
-### 1. Register the provider
-
-```ts
-// app.config.ts
-import { provideToaster } from 'ngx-herald';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideToaster({
-      position: 'bottom-right',
-      duration: 4000,
-    }),
-  ],
-};
-```
-
-`provideToaster()` is optional — all options have defaults and the service works without it.
-
-### 2. Add the outlet component
+Add the outlet component once at the root of your application (usually `app.component.html`):
 
 ```html
-<!-- app.html -->
+<!-- app.component.html -->
 <ngx-herald />
 <router-outlet />
 ```
 
-That's it. Place `<ngx-herald />` once at the root of your app.
+That's it.
 
 ---
 
@@ -214,16 +203,24 @@ interface ToastTemplateContext {
 
 ## Configuration
 
-`provideToaster()` sets global defaults for every toast. All fields are optional.
+To configure global defaults for every toast, register `provideToaster()` in your application providers (usually in `app.config.ts`). All fields are optional:
 
 ```ts
-provideToaster({
-  position: 'bottom-right',   // default: 'bottom-right'
-  duration: 4000,             // default: 4000
-  progressBar: true,          // default: true
-  dismissible: true,          // default: true
-  maxToasts: 5,               // default: 5 — oldest is dropped when exceeded
-});
+// app.config.ts
+import { ApplicationConfig } from '@angular/core';
+import { provideToaster } from 'ngx-herald';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideToaster({
+      position: 'bottom-right',   // default: 'bottom-right'
+      duration: 4000,             // default: 4000
+      progressBar: true,          // default: true
+      dismissible: true,          // default: true
+      maxToasts: 5,               // default: 5 — oldest is dropped when exceeded
+    }),
+  ],
+};
 ```
 
 ### Positions
@@ -342,6 +339,4 @@ ng serve demo   # starts the demo app at localhost:4200
 
 ## License
 
-MIT
-
-test
+[MIT](LICENSE)
