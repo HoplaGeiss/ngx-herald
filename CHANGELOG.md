@@ -1,3 +1,10 @@
+## [0.0.19](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.18...v0.0.19) (2026-06-05)
+
+
+### Bug Fixes
+
+* description ([8797863](https://github.com/HoplaGeiss/ngx-herald/commit/8797863a37cc1245ac39d6062a857dc2284fc31c))
+
 ## [0.0.18](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.17...v0.0.18) (2026-06-05)
 
 
