@@ -1,7 +1,7 @@
 {
   "name": "ngx-herald",
   "version": "0.0.1",
-  "description": "A modern Angular toast notification library. Signals-first, zoneless-compatible, and zero runtime dependencies.",
+  "description": "A lightweight, modern Angular toast notification library. Signals-first, zoneless-compatible, zero runtime dependencies, and an easy-to-use alternative to ngx-toastr.",
   "keywords": [
     "angular",
     "toast",
