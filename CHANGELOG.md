@@ -1,3 +1,10 @@
+## [0.0.9](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.8...v0.0.9) (2026-06-05)
+
+
+### Bug Fixes
+
+* trigger release ([06d459d](https://github.com/HoplaGeiss/ngx-herald/commit/06d459d20e17e005f3f28759b5eebed990636ad2))
+
 ## [0.0.8](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.7...v0.0.8) (2026-06-05)
 
 
