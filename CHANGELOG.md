@@ -1,3 +1,10 @@
+## [0.0.20](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.19...v0.0.20) (2026-06-05)
+
+
+### Bug Fixes
+
+* Improve package.json ([8ef575a](https://github.com/HoplaGeiss/ngx-herald/commit/8ef575a6bcbac89cb0b25171a73f993fe2498adb))
+
 ## [0.0.19](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.18...v0.0.19) (2026-06-05)
 
 
