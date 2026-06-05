@@ -58,6 +58,18 @@ importers:
         specifier: ^4.0.8
         version: 4.1.8(jsdom@28.1.0)(vite@7.3.2(less@4.6.4)(sass@1.97.3))
 
+  projects/ngx-herald:
+    dependencies:
+      '@angular/common':
+        specifier: ^21.2.0
+        version: 21.2.16(@angular/core@21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2))(rxjs@7.8.2)
+      '@angular/core':
+        specifier: ^21.2.0
+        version: 21.2.16(@angular/compiler@21.2.16)(rxjs@7.8.2)
+      tslib:
+        specifier: ^2.3.0
+        version: 2.8.1
+
 packages:
 
   '@acemir/cssom@0.9.31':

@@ -23,7 +23,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
 
       - name: Build library
-        run: ng build ngx-herald
+        run: pnpm exec ng build ngx-herald
 
       - name: Build demo
-        run: ng build demo
+        run: pnpm exec ng build demo
