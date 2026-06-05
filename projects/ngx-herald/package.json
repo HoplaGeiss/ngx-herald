@@ -12,6 +12,11 @@
     "zoneless",
     "ngx"
   ],
+  "author": "HoplaGeiss",
+  "homepage": "https://hoplageiss.github.io/ngx-herald/",
+  "bugs": {
+    "url": "https://github.com/HoplaGeiss/ngx-herald/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HoplaGeiss/ngx-herald.git"
