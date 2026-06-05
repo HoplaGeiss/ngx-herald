@@ -6,6 +6,8 @@ A modern Angular toast notification library. Signals-first, zoneless-compatible,
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/ngx-herald)](https://bundlephobia.com/package/ngx-herald)
 [![license](https://img.shields.io/npm/l/ngx-herald)](LICENSE)
 
+**[Live demo →](https://hoplageiss.github.io/ngx-herald/)**
+
 ---
 
 ## Features
@@ -341,5 +343,3 @@ ng serve demo   # starts the demo app at localhost:4200
 ## License
 
 MIT
-
-test
