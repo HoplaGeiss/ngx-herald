@@ -1,6 +1,17 @@
 {
   "name": "ngx-herald",
   "version": "0.0.1",
+  "description": "A modern Angular toast notification library. Signals-first, zoneless-compatible, and zero runtime dependencies.",
+  "keywords": [
+    "angular",
+    "toast",
+    "toastr",
+    "notification",
+    "alert",
+    "signals",
+    "zoneless",
+    "ngx"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HoplaGeiss/ngx-herald.git"
