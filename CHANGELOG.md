@@ -1,3 +1,10 @@
+## [0.0.16](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.15...v0.0.16) (2026-06-05)
+
+
+### Bug Fixes
+
+* badges readme ([69cef87](https://github.com/HoplaGeiss/ngx-herald/commit/69cef87aa71e1aa6b91da3fbc81826254acfdcbd))
+
 ## [0.0.15](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.14...v0.0.15) (2026-06-05)
 
 
