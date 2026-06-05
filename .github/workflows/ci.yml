@@ -33,4 +33,26 @@ jobs:
           retention-days: 1
 
       - name: Build demo
-        run: pnpm exec ng build demo
+        run: pnpm exec ng build demo --base-href /ngx-herald/
+
+      - name: Upload pages artifact
+        if: github.event_name == 'push'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/demo/browser
+
+  deploy:
+    if: github.event_name == 'push'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
