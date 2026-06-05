@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, TemplateRef, viewChild, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, TemplateRef, viewChild, effect, inject, signal, computed } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { toast, ToasterComponent } from 'ngx-herald';
+import { toast, ToasterComponent, ToastPosition } from 'ngx-herald';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +21,47 @@ export class App {
 
   readonly activeTheme = signal<'default' | 'material' | 'bootstrap' | 'prime'>('default');
 
+  // Configuration Signals
+  readonly activePreviewType = signal<'success' | 'error' | 'warning' | 'info'>('success');
+  readonly message = signal<string>('Operation completed successfully');
+  readonly description = signal<string>('Your changes have been saved.');
+  readonly duration = signal<number>(4000);
+  readonly position = signal<ToastPosition>('bottom-right');
+  readonly progressBar = signal<boolean>(true);
+  readonly dismissible = signal<boolean>(true);
+
+  readonly positions: ToastPosition[] = [
+    'top-left',
+    'top-center',
+    'top-right',
+    'bottom-left',
+    'bottom-center',
+    'bottom-right',
+  ];
+
+  readonly codeSnippet = computed(() => {
+    const type = this.activePreviewType();
+    const msg = this.message();
+    const desc = this.description();
+    const dur = this.duration();
+    const pos = this.position();
+    const pBar = this.progressBar();
+    const dis = this.dismissible();
+
+    const options: string[] = [];
+    if (desc) options.push(`  description: '${desc}'`);
+    if (dur !== 4000) options.push(`  duration: ${dur}`);
+    if (pos !== 'bottom-right') options.push(`  position: '${pos}'`);
+    if (!pBar) options.push(`  progressBar: false`);
+    if (!dis) options.push(`  dismissible: false`);
+
+    if (options.length === 0) {
+      return `toast.${type}('${msg}');`;
+    }
+
+    return `toast.${type}('${msg}', {\n${options.join(',\n')}\n});`;
+  });
+
   private readonly document = inject(DOCUMENT);
 
   constructor() {
@@ -36,40 +77,42 @@ export class App {
     this.activeTheme.set(theme);
   }
 
+  triggerToast(type: 'success' | 'error' | 'warning' | 'info'): void {
+    this.activePreviewType.set(type);
 
-  showSuccess(): void {
-    toast.success('File saved successfully', { description: 'Your changes have been saved.' });
+    const options: any = {
+      description: this.description(),
+      duration: this.duration(),
+      position: this.position(),
+      progressBar: this.progressBar(),
+      dismissible: this.dismissible(),
+    };
+
+    toast[type](this.message(), options);
   }
 
-  showError(): void {
-    toast.error('Something went wrong', { description: 'Please try again later.' });
+  updateMessage(event: Event): void {
+    this.message.set((event.target as HTMLInputElement).value);
   }
 
-  showWarning(): void {
-    toast.warning('Disk space low', { description: 'You have less than 1 GB remaining.' });
+  updateDescription(event: Event): void {
+    this.description.set((event.target as HTMLInputElement).value);
   }
 
-  showInfo(): void {
-    toast.info('New version available', { description: 'Refresh to get the latest features.' });
+  updateDuration(event: Event): void {
+    this.duration.set(Number((event.target as HTMLInputElement).value));
   }
 
-  showNoDismiss(): void {
-    toast.success('Auto-dismiss only', { dismissible: false, duration: 3000 });
+  updatePosition(event: Event): void {
+    this.position.set((event.target as HTMLSelectElement).value as ToastPosition);
   }
 
-  showNoProgress(): void {
-    toast.info('No progress bar', { progressBar: false });
+  updateProgressBar(event: Event): void {
+    this.progressBar.set((event.target as HTMLInputElement).checked);
   }
 
-  showLong(): void {
-    toast.info('This one sticks around', { duration: 10000, description: '10 second duration.' });
-  }
-
-  showCustom(): void {
-    const tmpl = this.customTmpl();
-    if (tmpl) {
-      toast.success('Custom template', { template: tmpl as TemplateRef<never> });
-    }
+  updateDismissible(event: Event): void {
+    this.dismissible.set((event.target as HTMLInputElement).checked);
   }
 
   showPromise(): void {
@@ -92,6 +135,13 @@ export class App {
       success: () => 'Connected!',
       error: (e) => `Failed: ${e instanceof Error ? e.message : 'unknown error'}`,
     });
+  }
+
+  showCustom(): void {
+    const tmpl = this.customTmpl();
+    if (tmpl) {
+      toast.success('Custom Template', { template: tmpl as TemplateRef<never> });
+    }
   }
 
   dismissAll(): void {

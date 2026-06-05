@@ -2,68 +2,169 @@
 
 <main class="demo">
   <header class="demo__header">
+    <div class="brand-badge">Signals-First • Zoneless • Zero-Deps</div>
     <h1>ngx-herald</h1>
-    <p>A modern Angular toast notification library — signals-first, zoneless-compatible, zero dependencies.</p>
+    <p class="tagline">A modern, lightweight Angular toast notification library.</p>
+    <div class="header-links">
+      <a href="https://github.com/HoplaGeiss/ngx-herald" target="_blank" rel="noopener" class="header-link header-link--github">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+        GitHub
+      </a>
+      <a href="https://www.npmjs.com/package/ngx-herald" target="_blank" rel="noopener" class="header-link header-link--npm">
+        <svg class="icon" viewBox="0 0 256 256" fill="currentColor">
+          <path d="M0 0h256v256H0z" fill="#cb3837"/><path d="M48 48h160v160h-32V80h-48v128H48z" fill="#fff"/>
+        </svg>
+        npm
+      </a>
+    </div>
   </header>
 
-  <section class="demo__section">
-    <h2>Theme select</h2>
-    <div class="theme-chips">
-      @for (theme of themes; track theme.id) {
-        <button
-          class="chip"
-          [class.chip--active]="activeTheme() === theme.id"
-          type="button"
-          (click)="setTheme(theme.id)"
-        >
-          {{ theme.label }}
-        </button>
-      }
-    </div>
-  </section>
+  <div class="demo__layout">
+    <!-- Left Column: Explanations, Themes, and Configurations -->
+    <div class="demo__column">
+      <!-- Explanation card -->
+      <section class="demo__section explanation-card">
+        <div class="explanation-icon">🎨</div>
+        <div class="explanation-content">
+          <h3>Framework Styling Adaptability</h3>
+          <p>
+            ngx-herald ships with a clean default theme, but its visual design is entirely styled via CSS custom properties. This makes it extremely easy to customize or adapt to different UI frameworks and design systems.
+          </p>
+          <p class="highlight-text">
+            <strong>Try it:</strong> Toggle the theme buttons below to see the toasts adapt automatically to styles representing Angular Material, Bootstrap, and PrimeNG.
+          </p>
+        </div>
+      </section>
 
-  <section class="demo__section">
-    <h2>Toast types</h2>
-    <div class="demo__grid">
-      <button class="btn btn--success" type="button" (click)="showSuccess()">Success</button>
-      <button class="btn btn--error" type="button" (click)="showError()">Error</button>
-      <button class="btn btn--warning" type="button" (click)="showWarning()">Warning</button>
-      <button class="btn btn--info" type="button" (click)="showInfo()">Info</button>
-    </div>
-  </section>
+      <!-- Theme selector -->
+      <section class="demo__section">
+        <h2>Theme select</h2>
+        <div class="theme-chips">
+          @for (theme of themes; track theme.id) {
+            <button
+              class="chip"
+              [class.chip--active]="activeTheme() === theme.id"
+              type="button"
+              (click)="setTheme(theme.id)"
+            >
+              {{ theme.label }}
+            </button>
+          }
+        </div>
+      </section>
 
-  <section class="demo__section">
-    <h2>Variants</h2>
-    <div class="demo__grid">
-      <button class="btn" type="button" (click)="showNoDismiss()">No dismiss button</button>
-      <button class="btn" type="button" (click)="showNoProgress()">No progress bar</button>
-      <button class="btn" type="button" (click)="showLong()">Long duration (10s)</button>
-      <button class="btn" type="button" (click)="showCustom()">Custom template</button>
-    </div>
-  </section>
+      <!-- Dynamic Configurations -->
+      <section class="demo__section config-section">
+        <h2>Configuration</h2>
+        <div class="config-panel">
+          <div class="config-grid">
+            <div class="config-group">
+              <label for="config-message">Message</label>
+              <input
+                id="config-message"
+                type="text"
+                [value]="message()"
+                (input)="updateMessage($event)"
+                placeholder="Toast message text..."
+              />
+            </div>
+            <div class="config-group">
+              <label for="config-description">Description (optional)</label>
+              <input
+                id="config-description"
+                type="text"
+                [value]="description()"
+                (input)="updateDescription($event)"
+                placeholder="Subtitle description..."
+              />
+            </div>
+            <div class="config-group">
+              <label for="config-duration">Duration (ms)</label>
+              <input
+                id="config-duration"
+                type="number"
+                [value]="duration()"
+                (input)="updateDuration($event)"
+                min="0"
+                step="500"
+                placeholder="e.g. 4000 (0 for infinite)"
+              />
+              <span class="input-hint">0 disables auto-dismissal</span>
+            </div>
+            <div class="config-group">
+              <label for="config-position">Position</label>
+              <select id="config-position" [value]="position()" (change)="updatePosition($event)">
+                @for (pos of positions; track pos) {
+                  <option [value]="pos">{{ pos }}</option>
+                }
+              </select>
+            </div>
+          </div>
 
-  <section class="demo__section">
-    <h2>Promise</h2>
-    <div class="demo__grid">
-      <button class="btn" type="button" (click)="showPromise()">Promise (resolves after 2s)</button>
-      <button class="btn" type="button" (click)="showPromiseError()">Promise (rejects after 2s)</button>
+          <div class="config-checkboxes">
+            <label class="checkbox-label">
+              <input type="checkbox" [checked]="progressBar()" (change)="updateProgressBar($event)" />
+              <span class="custom-checkbox"></span>
+              <span class="label-text">Show progress bar</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" [checked]="dismissible()" (change)="updateDismissible($event)" />
+              <span class="custom-checkbox"></span>
+              <span class="label-text">Dismissible (show close button)</span>
+            </label>
+          </div>
+        </div>
+      </section>
     </div>
-  </section>
 
-  <section class="demo__section">
-    <div class="demo__grid">
-      <button class="btn btn--outline" type="button" (click)="dismissAll()">Dismiss all</button>
+    <!-- Right Column: Triggers, Code Preview, and Promise Actions -->
+    <div class="demo__column">
+      <!-- Toast Types Trigger Grid -->
+      <section class="demo__section trigger-section">
+        <h2>Toast Types</h2>
+        <p class="trigger-desc">Click a type below to trigger a toast using the configuration defined on the left.</p>
+        <div class="demo__grid">
+          <button class="btn btn--success" type="button" (click)="triggerToast('success')">Success</button>
+          <button class="btn btn--error" type="button" (click)="triggerToast('error')">Error</button>
+          <button class="btn btn--warning" type="button" (click)="triggerToast('warning')">Warning</button>
+          <button class="btn btn--info" type="button" (click)="triggerToast('info')">Info</button>
+        </div>
+      </section>
+
+      <!-- Live Code snippet -->
+      <section class="demo__section code-section">
+        <h2>Live Code Preview</h2>
+        <div class="code-block-container">
+          <pre><code>{{ codeSnippet() }}</code></pre>
+        </div>
+      </section>
+
+      <!-- Special triggers -->
+      <section class="demo__section promise-section">
+        <h2>Special Scenarios</h2>
+        <div class="demo__grid">
+          <button class="btn btn--outline" type="button" (click)="showPromise()">Promise (resolves 2s)</button>
+          <button class="btn btn--outline" type="button" (click)="showPromiseError()">Promise (rejects 2s)</button>
+          <button class="btn btn--outline" type="button" (click)="showCustom()">Custom Template</button>
+          <button class="btn btn--danger-outline" type="button" (click)="dismissAll()">Dismiss all active</button>
+        </div>
+      </section>
     </div>
-  </section>
+  </div>
 </main>
 
+<!-- Custom TemplateRef toast structure -->
 <ng-template #customTmpl let-t let-dismiss="dismiss">
-  <div style="padding: 12px 16px; display: flex; align-items: center; gap: 12px;">
-    <span style="font-size: 20px;" aria-hidden="true">🎉</span>
-    <div style="flex: 1;">
-      <strong>{{ t.message }}</strong>
-      <p style="margin: 2px 0 0; color: #6b7280; font-size: 13px;">This is a custom TemplateRef toast.</p>
+  <div class="custom-toast-container">
+    <span class="custom-toast-icon" aria-hidden="true">🚀</span>
+    <div class="custom-toast-body">
+      <strong class="custom-toast-title">{{ t.message }}</strong>
+      <p class="custom-toast-desc">Custom TemplateRef toast active!</p>
     </div>
-    <button type="button" (click)="dismiss()" style="border: none; background: none; cursor: pointer; font-size: 18px; line-height: 1;" aria-label="Dismiss">×</button>
+    <button type="button" (click)="dismiss()" class="custom-toast-close" aria-label="Dismiss">×</button>
   </div>
 </ng-template>
+
+
