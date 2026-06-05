@@ -8,7 +8,7 @@
       "@semantic-release/exec",
       {
         "prepareCmd": "npm pkg set version=${nextRelease.version} --prefix dist/ngx-herald",
-        "publishCmd": "npm publish ./dist/ngx-herald --provenance --access public"
+        "publishCmd": "NPM_TOKEN= npm publish ./dist/ngx-herald --provenance --access public"
       }
     ],
     [
