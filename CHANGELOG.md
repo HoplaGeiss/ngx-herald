@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.5...v0.0.6) (2026-06-05)
+
+
+### Bug Fixes
+
+* trigger pipeline ([55fd48b](https://github.com/HoplaGeiss/ngx-herald/commit/55fd48ba276a1e23ff6a2b8a5932cd3d64d2affc))
+
 ## [0.0.5](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.4...v0.0.5) (2026-06-05)
 
 
