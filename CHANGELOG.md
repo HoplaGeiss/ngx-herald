@@ -1,3 +1,10 @@
+## [0.0.18](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.17...v0.0.18) (2026-06-05)
+
+
+### Bug Fixes
+
+* improve seo ([8a3d29e](https://github.com/HoplaGeiss/ngx-herald/commit/8a3d29ea3912069d390b65ad8a3821eff41d6379))
+
 ## [0.0.17](https://github.com/HoplaGeiss/ngx-herald/compare/v0.0.16...v0.0.17) (2026-06-05)
 
 
