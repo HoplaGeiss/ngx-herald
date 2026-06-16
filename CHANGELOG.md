@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/HoplaGeiss/ngx-herald/compare/v1.0.0...v1.0.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* improve demo ([b475f8b](https://github.com/HoplaGeiss/ngx-herald/commit/b475f8b49280ea79c3735e79718df92b0c7e1c93))
+
 # [1.0.0](https://github.com/HoplaGeiss/ngx-herald/compare/v0.1.0...v1.0.0) (2026-06-05)
 
 
