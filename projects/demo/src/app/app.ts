@@ -31,12 +31,12 @@ export class App {
   readonly dismissible = signal<boolean>(true);
 
   readonly positions: ToastPosition[] = [
-    'top-left',
-    'top-center',
-    'top-right',
-    'bottom-left',
-    'bottom-center',
     'bottom-right',
+    'bottom-center',
+    'bottom-left',
+    'top-right',
+    'top-center',
+    'top-left',
   ];
 
   readonly codeSnippet = computed(() => {

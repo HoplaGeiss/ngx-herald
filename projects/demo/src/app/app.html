@@ -2,9 +2,11 @@
 
 <main class="demo">
   <header class="demo__header">
-    <div class="brand-badge">Signals-First • Zoneless • Zero-Deps</div>
     <h1>ngx-herald</h1>
-    <p class="tagline">A modern, lightweight Angular toast notification library.</p>
+    <p class="tagline">
+      A modern, lightweight Angular toast notification library.
+      <span class="tagline-note">Signals-First • Zoneless • Zero-Deps</span>
+    </p>
     <div class="header-links">
       <a href="https://github.com/HoplaGeiss/ngx-herald" target="_blank" rel="noopener" class="header-link header-link--github">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
@@ -24,23 +26,12 @@
   <div class="demo__layout">
     <!-- Left Column: Explanations, Themes, and Configurations -->
     <div class="demo__column">
-      <!-- Explanation card -->
-      <section class="demo__section explanation-card">
-        <div class="explanation-icon">🎨</div>
-        <div class="explanation-content">
-          <h3>Framework Styling Adaptability</h3>
-          <p>
-            ngx-herald ships with a clean default theme, but its visual design is entirely styled via CSS custom properties. This makes it extremely easy to customize or adapt to different UI frameworks and design systems.
-          </p>
-          <p class="highlight-text">
-            <strong>Try it:</strong> Toggle the theme buttons below to see the toasts adapt automatically to styles representing Angular Material, Bootstrap, and PrimeNG.
-          </p>
-        </div>
-      </section>
-
       <!-- Theme selector -->
       <section class="demo__section">
         <h2>Theme select</h2>
+        <p class="note-text">
+          <strong>Note:</strong> ngx-herald styles are driven by CSS custom properties, so the toast visuals adapt cleanly to different theme appearances.
+        </p>
         <div class="theme-chips">
           @for (theme of themes; track theme.id) {
             <button
